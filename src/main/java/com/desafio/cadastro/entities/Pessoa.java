@@ -1,8 +1,9 @@
 package com.desafio.cadastro.entities;
 
-
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -11,6 +12,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Pessoa implements Serializable {
@@ -20,11 +22,13 @@ public class Pessoa implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String name;
+	private String nome;
 	private String cpf;
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataNascimento;
-	//private List<Contatos> contatos = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "pessoa")
+	private List<Contatos> contatos = new ArrayList<>();
 	
 	//Constructors
 	public Pessoa() {
@@ -32,7 +36,7 @@ public class Pessoa implements Serializable {
 	public Pessoa(Long id, String name, String cpf, LocalDate dataNascimento) {
 		super();
 		this.id = id;
-		this.name = name;
+		this.nome = name;
 		this.cpf = cpf;
 		this.dataNascimento = dataNascimento;
 	}
@@ -45,10 +49,10 @@ public class Pessoa implements Serializable {
 		this.id = id;
 	}
 	public String getName() {
-		return name;
+		return nome;
 	}
 	public void setName(String name) {
-		this.name = name;
+		this.nome = name;
 	}
 	public String getCpf() {
 		return cpf;
@@ -62,6 +66,10 @@ public class Pessoa implements Serializable {
 	public void setDataNascimento(LocalDate dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
+	public List<Contatos> getContatos() {
+		return contatos;
+	}
+	
 	
 	//hashCode e equals
 	@Override
@@ -79,7 +87,6 @@ public class Pessoa implements Serializable {
 		Pessoa other = (Pessoa) obj;
 		return Objects.equals(id, other.id);
 	}
-	
 	
 	
 	
