@@ -17,7 +17,7 @@ public class PessoaResource {
 	
 	@GetMapping
 	public ResponseEntity<Pessoa> findAll() {
-		Pessoa p = new Pessoa(1L, "Diego", "43160014851", LocalDate.of(1999, 7, 2));
+		Pessoa p = new Pessoa(1L, "Diego", "12360043851", LocalDate.of(1999, 7, 2));
 		return ResponseEntity.ok().body(p);
 		
 	}
