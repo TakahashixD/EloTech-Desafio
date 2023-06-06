@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 
@@ -14,6 +15,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
+
 
 @Entity
 public class Pessoa implements Serializable {
@@ -23,12 +28,19 @@ public class Pessoa implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@NotBlank(message = "Nome não deve estar em branco.")
 	private String nome;
+	
+	@NotBlank(message = "CPF não deve estar em branco.")
 	private String cpf;
 	
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@NotNull(message = "Data de nascimento não deve ser vazia.")
+	@Past(message = "Data de nascimento deve estar no passado.")
 	private LocalDate dataNascimento;
 	
+	@NotNull
 	@OneToMany(mappedBy = "pessoa")
 	private List<Contatos> contatos = new ArrayList<>();
 	
