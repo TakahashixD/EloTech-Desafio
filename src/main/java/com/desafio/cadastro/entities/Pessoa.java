@@ -8,6 +8,7 @@ import java.util.Objects;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,6 +25,7 @@ public class Pessoa implements Serializable {
 	private Long id;
 	private String nome;
 	private String cpf;
+	
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataNascimento;
 	
@@ -48,11 +50,11 @@ public class Pessoa implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getName() {
+	public String getNome() {
 		return nome;
 	}
-	public void setName(String name) {
-		this.nome = name;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 	public String getCpf() {
 		return cpf;
