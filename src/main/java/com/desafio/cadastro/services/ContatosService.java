@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.desafio.cadastro.entities.Contatos;
+
 import com.desafio.cadastro.repositories.ContatosRepository;
+import com.desafio.cadastro.services.exceptions.ResourceNotFoundException;
 
 @Service
 public class ContatosService {
@@ -21,7 +23,11 @@ public class ContatosService {
 	
 	public Contatos findById(Long id) {
 		Optional<Contatos> obj = repository.findById(id);
-		return obj.get();
+		return obj.orElseThrow(() -> new ResourceNotFoundException(id));
+	}
+	
+	public Contatos insert(Contatos obj) {
+		return repository.save(obj);
 	}
 }
 

@@ -9,7 +9,6 @@ import java.util.Objects;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -40,13 +39,13 @@ public class Pessoa implements Serializable {
 	@Past(message = "Data de nascimento deve estar no passado.")
 	private LocalDate dataNascimento;
 	
-	@NotNull
 	@OneToMany(mappedBy = "pessoa")
 	private List<Contatos> contatos = new ArrayList<>();
 	
 	//Constructors
 	public Pessoa() {
 	}
+	
 	public Pessoa(Long id, String name, String cpf, LocalDate dataNascimento) {
 		super();
 		this.id = id;

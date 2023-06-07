@@ -9,8 +9,12 @@ import org.springframework.stereotype.Service;
 
 import com.desafio.cadastro.entities.Pessoa;
 import com.desafio.cadastro.repositories.PessoaRepository;
+import com.desafio.cadastro.services.exceptions.CpfInvalidException;
 import com.desafio.cadastro.services.exceptions.DatabaseException;
 import com.desafio.cadastro.services.exceptions.ResourceNotFoundException;
+import com.desafio.cadastro.validation.CpfValidator;
+
+import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class PessoaService {
@@ -28,6 +32,9 @@ public class PessoaService {
 	}
 
 	public Pessoa insert(Pessoa obj) {
+		if(CpfValidator.isCPF(obj.getCpf()) == false) {
+			throw new CpfInvalidException(obj.getCpf());
+		}
 		return repository.save(obj);
 	}
 
@@ -45,9 +52,13 @@ public class PessoaService {
 	}
 
 	public Pessoa update(Long id, Pessoa obj) {
+		try {
 		Pessoa entity = repository.getReferenceById(id);
 		updateData(entity, obj);
 		return repository.save(entity);
+		}catch(EntityNotFoundException e) {
+			throw new ResourceNotFoundException(id);
+		}
 	}
 
 	private void updateData(Pessoa entity, Pessoa obj) {

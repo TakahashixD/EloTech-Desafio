@@ -23,14 +23,14 @@ public class Contatos implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotBlank
+	@NotBlank(message = "Nome não deve estar em branco.")
 	private String nome;
 	
-	@NotBlank
+	@NotBlank(message = "Telefone não deve estar em branco.")
 	private String telefone;
 	
-	@NotBlank
-	@Email
+	@NotBlank(message = "Email não deve estar em branco.")
+	@Email(message = "O Email deve ser válido.")
 	private String email;
 	
 	@JsonIgnore
