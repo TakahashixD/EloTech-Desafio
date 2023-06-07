@@ -11,7 +11,7 @@ import com.desafio.cadastro.services.exceptions.CpfInvalidException;
 import com.desafio.cadastro.services.exceptions.DatabaseException;
 import com.desafio.cadastro.services.exceptions.ResourceNotFoundException;
 
-import jakarta.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequest;
 
 @ControllerAdvice
 public class ResourceExceptionHandler {

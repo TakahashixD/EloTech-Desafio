@@ -12,7 +12,7 @@ import com.desafio.cadastro.repositories.ContatosRepository;
 import com.desafio.cadastro.services.exceptions.DatabaseException;
 import com.desafio.cadastro.services.exceptions.ResourceNotFoundException;
 
-import jakarta.persistence.EntityNotFoundException;
+import javax.persistence.EntityNotFoundException;
 
 @Service
 public class ContatosService {

@@ -14,7 +14,7 @@ import com.desafio.cadastro.services.exceptions.DatabaseException;
 import com.desafio.cadastro.services.exceptions.ResourceNotFoundException;
 import com.desafio.cadastro.validation.CpfValidator;
 
-import jakarta.persistence.EntityNotFoundException;
+import javax.persistence.EntityNotFoundException;
 
 @Service
 public class PessoaService {

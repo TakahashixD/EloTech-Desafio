@@ -18,13 +18,12 @@ import com.desafio.cadastro.entities.Contatos;
 import com.desafio.cadastro.entities.Pessoa;
 import com.desafio.cadastro.repositories.ContatosRepository;
 
-import jakarta.transaction.Transactional;
+import javax.transaction.Transactional;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
 @WebAppConfiguration
 @Transactional
-
 public class ContatosServiceTest {
 	
 	@Autowired

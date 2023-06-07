@@ -17,7 +17,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import com.desafio.cadastro.entities.Pessoa;
 import com.desafio.cadastro.repositories.PessoaRepository;
 
-import jakarta.transaction.Transactional;
+import javax.transaction.Transactional;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)

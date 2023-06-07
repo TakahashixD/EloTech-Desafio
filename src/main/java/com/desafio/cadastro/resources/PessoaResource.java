@@ -18,7 +18,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.desafio.cadastro.entities.Pessoa;
 import com.desafio.cadastro.services.PessoaService;
 
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 
 
 
