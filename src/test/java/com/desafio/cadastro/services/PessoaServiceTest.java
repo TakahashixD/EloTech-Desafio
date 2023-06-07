@@ -34,7 +34,9 @@ public class PessoaServiceTest {
 	
 	@Test
 	public void findById(){
-		Pessoa pessoa = pessoaService.findById(1L);
+		Pessoa p1 = new Pessoa(null, "Dante", "294.556.990-60", LocalDate.of(1999, 10, 23));
+		pessoaService.insert(p1);
+		Pessoa pessoa = pessoaService.findById(p1.getId());
 		assertEquals("Dante", pessoa.getNome());
 		assertEquals("294.556.990-60", pessoa.getCpf());
 		assertEquals(LocalDate.of(1999, 10, 23), pessoa.getDataNascimento());
@@ -50,11 +52,13 @@ public class PessoaServiceTest {
 	
 	@Test
 	public void update(){
+		Pessoa p1 = new Pessoa(null, "Dante", "294.556.990-60", LocalDate.of(1999, 10, 23));
+		pessoaService.insert(p1);
 		Pessoa updatedData = new Pessoa(null, "Diego", "983.726.820-46", LocalDate.of(1999, 02, 07));
-		pessoaService.update(1L, updatedData);
-		assertEquals(repository.findById(1L).get().getNome(), updatedData.getNome());
-		assertEquals(repository.findById(1L).get().getCpf(), updatedData.getCpf());
-		assertEquals(repository.findById(1L).get().getDataNascimento(), updatedData.getDataNascimento());
+		pessoaService.update(p1.getId(), updatedData);
+		assertEquals(repository.findById(p1.getId()).get().getNome(), updatedData.getNome());
+		assertEquals(repository.findById(p1.getId()).get().getCpf(), updatedData.getCpf());
+		assertEquals(repository.findById(p1.getId()).get().getDataNascimento(), updatedData.getDataNascimento());
 	}
 	
 	@Test

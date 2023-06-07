@@ -18,6 +18,7 @@ import com.desafio.cadastro.entities.Contatos;
 import com.desafio.cadastro.entities.Pessoa;
 import com.desafio.cadastro.repositories.ContatosRepository;
 
+
 import javax.transaction.Transactional;
 
 @SpringBootTest
@@ -38,7 +39,9 @@ public class ContatosServiceTest {
 	
 	@Test
 	public void findById(){
-		Contatos contatos = contatosService.findById(1L);
+		Contatos c1 = new Contatos(null, "Xico", "4499553448", "xico@gmail.com", null);
+		contatosService.insert(c1);
+		Contatos contatos = contatosService.findById(c1.getId());
 		assertEquals("Xico", contatos.getNome());
 		assertEquals("4499553448", contatos.getTelefone());
 		assertEquals("xico@gmail.com", contatos.getEmail());
@@ -54,12 +57,15 @@ public class ContatosServiceTest {
 	}
 	
 	@Test
-	public void update(){
+	public void update() {
+		Contatos c1 = new Contatos(null, "Xico", "4499553448", "xico@gmail.com", null);
+		contatosService.insert(c1);
 		Contatos updatedData = new Contatos(null, "Diego", "4499333448", "diego@gmail.com", null);
-		contatosService.update(1L, updatedData);
-		assertEquals(repository.findById(1L).get().getNome(), updatedData.getNome());
-		assertEquals(repository.findById(1L).get().getTelefone(), updatedData.getTelefone());
-		assertEquals(repository.findById(1L).get().getEmail(), updatedData.getEmail());
+		contatosService.update(c1.getId(), updatedData);
+		assertEquals("Diego", c1.getNome());
+		assertEquals("4499333448", c1.getTelefone());
+		assertEquals("diego@gmail.com", c1.getEmail());
+
 	}
 	
 	@Test
