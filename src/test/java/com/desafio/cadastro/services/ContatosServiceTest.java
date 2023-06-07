@@ -1,5 +1,6 @@
 package com.desafio.cadastro.services;
 
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -20,6 +21,7 @@ import com.desafio.cadastro.repositories.ContatosRepository;
 
 
 import javax.transaction.Transactional;
+
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
