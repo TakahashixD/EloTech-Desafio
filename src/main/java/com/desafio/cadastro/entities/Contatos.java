@@ -13,6 +13,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Contatos implements Serializable{
@@ -24,18 +25,21 @@ public class Contatos implements Serializable{
 	private Long id;
 	
 	@NotBlank(message = "Nome não deve estar em branco.")
+	@NotNull
 	private String nome;
 	
 	@NotBlank(message = "Telefone não deve estar em branco.")
+	@NotNull
 	private String telefone;
 	
 	@NotBlank(message = "Email não deve estar em branco.")
-	@Email(message = "O Email deve ser válido.")
+	@NotNull
+	@Email(regexp = ".+[@].+[\\.].+", message = "O Email deve ser válido.")
 	private String email;
 	
 	@JsonIgnore
 	@ManyToOne
-	@JoinColumn(name = "pessoa_id")
+	@JoinColumn(name = "pessoa_id", nullable = true)
 	private Pessoa pessoa;
 	
 	//Constructors

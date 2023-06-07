@@ -32,10 +32,12 @@ public class PessoaService {
 	}
 
 	public Pessoa insert(Pessoa obj) {
-		if(CpfValidator.isCPF(obj.getCpf()) == false) {
-			throw new CpfInvalidException(obj.getCpf());
+		if(CpfValidator.isCPF(obj.getCpf()) == true) {
+			return repository.save(obj);
 		}
-		return repository.save(obj);
+		else {
+			throw new CpfInvalidException(obj.getCpf());			
+		}
 	}
 
 	public void delete(Long id) {

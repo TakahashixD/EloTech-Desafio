@@ -18,7 +18,7 @@ public class ResourceExceptionHandler {
 	
 	@ExceptionHandler(ResourceNotFoundException.class)
 	public ResponseEntity<StandardError> resourceNotFound(ResourceNotFoundException e , HttpServletRequest request){
-		String error = "Resource not found";
+		String error = "Recurso não encontrado";
 		HttpStatus status = HttpStatus.NOT_FOUND;
 		StandardError err = new StandardError(Instant.now(),status.value(), error, e.getMessage(), request.getRequestURI());
 		return ResponseEntity.status(status).body(err);
@@ -26,7 +26,7 @@ public class ResourceExceptionHandler {
 	
 	@ExceptionHandler(DatabaseException.class)
 	public ResponseEntity<StandardError> database(DatabaseException e , HttpServletRequest request){
-		String error = "Database error";
+		String error = "Erro do Banco de dados";
 		HttpStatus status = HttpStatus.BAD_REQUEST;
 		StandardError err = new StandardError(Instant.now(),status.value(), error, e.getMessage(), request.getRequestURI());
 		return ResponseEntity.status(status).body(err);
@@ -34,7 +34,7 @@ public class ResourceExceptionHandler {
 	
 	@ExceptionHandler(CpfInvalidException.class)
 	public ResponseEntity<StandardError> database(CpfInvalidException e , HttpServletRequest request){
-		String error = "Invalid CPF";
+		String error = "CPF inválido";
 		HttpStatus status = HttpStatus.BAD_REQUEST;
 		StandardError err = new StandardError(Instant.now(),status.value(), error, e.getMessage(), request.getRequestURI());
 		return ResponseEntity.status(status).body(err);

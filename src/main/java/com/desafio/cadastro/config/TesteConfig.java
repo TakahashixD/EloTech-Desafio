@@ -26,8 +26,8 @@ public class TesteConfig implements CommandLineRunner{
 	
 	@Override
 	public void run(String... args) throws Exception {
-		Pessoa p1 = new Pessoa(null, "Dante", "12360043852", LocalDate.of(1999, 10, 23));
-		Pessoa p2 = new Pessoa(null, "Vergil", "12360043853", LocalDate.of(1999, 10, 23));
+		Pessoa p1 = new Pessoa(null, "Dante", "294.556.990-60", LocalDate.of(1999, 10, 23));
+		Pessoa p2 = new Pessoa(null, "Vergil", "294.313.480-55", LocalDate.of(1999, 10, 23));
 		
 		Contatos c1 = new Contatos(null, "Xico", "4499553448", "xico@gmail.com", p1);
 		Contatos c2 = new Contatos(null, "Chico", "4499553442", "chico@outlook.com", p2);

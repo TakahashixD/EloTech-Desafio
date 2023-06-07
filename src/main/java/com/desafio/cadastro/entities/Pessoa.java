@@ -29,9 +29,11 @@ public class Pessoa implements Serializable {
 	private Long id;
 	
 	@NotBlank(message = "Nome não deve estar em branco.")
+	@NotNull
 	private String nome;
 	
 	@NotBlank(message = "CPF não deve estar em branco.")
+	@NotNull
 	private String cpf;
 	
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
