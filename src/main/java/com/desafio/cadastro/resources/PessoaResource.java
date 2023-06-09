@@ -25,7 +25,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping(value = "/pessoas")
-@CrossOrigin(origins = "http://localhost:3000/")
+@CrossOrigin(origins = "https://elo-tech-front-end.vercel.app//")
 public class PessoaResource {
 	
 	@Autowired
@@ -51,6 +51,7 @@ public class PessoaResource {
 		return ResponseEntity.created(uri).body(obj);
 	}
 	
+
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<Void> delete(@PathVariable Long id){
 		service.delete(id);

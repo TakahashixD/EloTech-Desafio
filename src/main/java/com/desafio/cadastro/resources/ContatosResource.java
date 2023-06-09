@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.desafio.cadastro.entities.Contatos;
-import com.desafio.cadastro.repositories.PessoaRepository;
+
 import com.desafio.cadastro.services.ContatosService;
 
 
@@ -25,14 +25,11 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping(value = "/contatos")
-@CrossOrigin(origins = "http://localhost:3000/")
+@CrossOrigin(origins = "https://elo-tech-front-end.vercel.app//")
 public class ContatosResource {
 	
 	@Autowired
 	private ContatosService service;
-	
-	@Autowired
-	private PessoaRepository pessoaRepository;
 	
 	@GetMapping
 	public ResponseEntity<List<Contatos>> findAll() {
