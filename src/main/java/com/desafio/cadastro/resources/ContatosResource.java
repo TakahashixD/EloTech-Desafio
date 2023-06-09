@@ -25,7 +25,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping(value = "/contatos")
-@CrossOrigin(origins = "https://elo-tech-front-end.vercel.app//")
+@CrossOrigin(origins = "https://elo-tech-front-end.vercel.app")
 public class ContatosResource {
 	
 	@Autowired
