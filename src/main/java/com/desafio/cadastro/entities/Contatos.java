@@ -3,9 +3,11 @@ package com.desafio.cadastro.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -37,9 +39,10 @@ public class Contatos implements Serializable{
 	@Email(regexp = ".+[@].+[\\.].+", message = "O Email deve ser válido.")
 	private String email;
 	
-	@JsonIgnore
-	@ManyToOne
-	@JoinColumn(name = "pessoa_id", nullable = true)
+	@JsonBackReference
+	//@JsonIgnore
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "pessoa_id")
 	private Pessoa pessoa;
 	
 	//Constructors

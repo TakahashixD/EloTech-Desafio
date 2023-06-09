@@ -9,7 +9,11 @@ import java.util.Objects;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -41,7 +45,8 @@ public class Pessoa implements Serializable {
 	@Past(message = "Data de nascimento deve estar no passado.")
 	private LocalDate dataNascimento;
 	
-	@OneToMany(mappedBy = "pessoa")
+	@JsonManagedReference
+	@OneToMany(mappedBy = "pessoa", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Contatos> contatos = new ArrayList<>();
 	
 	//Constructors
