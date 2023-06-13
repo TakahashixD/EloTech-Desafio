@@ -11,6 +11,6 @@ public class CpfValidatorTest {
 	
 	@Test
 	public void isCPF(){
-		assertTrue(CpfValidator.isCPF("294.556.990-60"));
+		assertTrue(CpfValidator.isCPF("12345678987"));
 	}
 }
