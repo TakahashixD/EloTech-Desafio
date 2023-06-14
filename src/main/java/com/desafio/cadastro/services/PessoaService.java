@@ -32,33 +32,36 @@ public class PessoaService {
 	}
 
 	public Pessoa insert(Pessoa obj) {
-		if(CpfValidator.isCPF(obj.getCpf()) == true) {
+		if (CpfValidator.isCPF(obj.getCpf()) == true) {
 			return repository.save(obj);
-		}
-		else {
-			throw new CpfInvalidException(obj.getCpf());			
+		} else {
+			throw new CpfInvalidException(obj.getCpf());
 		}
 	}
 
 	public void delete(Long id) {
 		try {
-			if(repository.existsById(id) == true) {
-				repository.deleteById(id);				
-			}
-			else {
+			if (repository.existsById(id) == true) {
+				repository.deleteById(id);
+			} else {
 				throw new ResourceNotFoundException(id);
 			}
-		}catch(DataIntegrityViolationException e) {
+		} catch (DataIntegrityViolationException e) {
 			throw new DatabaseException(e.getMessage());
 		}
 	}
 
 	public Pessoa update(Long id, Pessoa obj) {
 		try {
-		Pessoa entity = repository.getReferenceById(id);
-		updateData(entity, obj);
-		return repository.save(entity);
-		}catch(EntityNotFoundException e) {
+			Pessoa entity = repository.getReferenceById(id);
+			if(CpfValidator.isCPF(entity.getCpf()) == true) {
+				updateData(entity, obj);
+				return repository.save(entity);
+			}
+			else {
+				throw new CpfInvalidException(entity.getCpf());			
+			}
+		} catch (EntityNotFoundException e) {
 			throw new ResourceNotFoundException(id);
 		}
 	}
